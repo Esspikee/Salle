@@ -37,6 +37,11 @@ h3 { font-size: .98rem; }
 .eyebrow { color: var(--green); font-weight: 800; letter-spacing: .11em; font-size: .68rem; }
 .topbar-actions { display: flex; gap: 8px; }
 .icon-button { width: 44px; height: 44px; color: white; background: rgb(255 255 255 / 12%); border: 1px solid rgb(255 255 255 / 20%); border-radius: 14px; font-size: 1.35rem; }
+.install-banner { margin: 14px 16px -4px; padding: 11px 12px 11px 14px; display: flex; align-items: center; justify-content: space-between; gap: 10px; color: #dffff9; background: var(--blue); border-radius: 16px; box-shadow: var(--shadow); }
+.install-banner strong, .install-banner span { display: block; }
+.install-banner strong { font-size: .86rem; }
+.install-banner span { margin-top: 1px; color: #b9f6ed; font-size: .72rem; }
+.install-button { min-height: 38px; padding: 7px 12px; color: var(--navy); background: var(--green); border: 0; border-radius: 11px; font-size: .78rem; font-weight: 900; }
 main { padding: 20px 16px; }
 .page-heading { display: flex; align-items: end; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
 .page-heading p { color: var(--muted); font-size: .88rem; }
@@ -90,6 +95,7 @@ textarea { min-height: 82px; resize: vertical; }
 .form-grid { display:grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
 .form-actions { display:flex; gap: 9px; margin-top: 4px; }
 .form-actions > * { flex: 1; }
+.sheet-actions { display: flex; gap: 7px; }
 .menu-list { display:grid; gap: 10px; }
 .menu-list button { text-align:left; min-height: 48px; padding: 12px; color: var(--navy); background: #eefaf8; border: 0; border-radius: 12px; font-weight: 800; }
 #toast { position: fixed; z-index: 10; left: 50%; bottom: 94px; transform: translate(-50%, 20px); max-width: calc(100% - 32px); padding: 10px 14px; opacity: 0; pointer-events: none; color: white; background: var(--navy); border-radius: 12px; box-shadow: var(--shadow); transition: .2s ease; }
@@ -111,5 +117,6 @@ body.dark input, body.dark select, body.dark textarea { color: var(--ink); backg
 body.dark .close { color: var(--green); background: #1d5360; }
 body.dark .bottom-nav { background: rgb(16 45 66 / 94%); border-color: #2c6573; }
 body.dark .menu-list button { color: var(--green); background: #1c5361; }
+body.dark .install-banner { color: #e8fffb; background: #0d6575; }
 
 @media (min-width: 680px) { .topbar { border-radius: 0 0 24px 24px; } body { background: #dff4ef; } .app-shell { background: var(--canvas); box-shadow: 0 0 50px rgb(33 58 87 / 12%); } }
