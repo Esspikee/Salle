@@ -3,7 +3,6 @@ const DATA_VERSION = "empty-start-v2";
 const routes = ["home", "tasks", "subjects", "grades"];
 let state = load();
 let currentRoute = "home";
-let deferredInstallPrompt = null;
 
 function applyTheme(theme) {
   const dark = theme === "dark";
@@ -12,29 +11,6 @@ function applyTheme(theme) {
   const button = document.querySelector("#theme-button");
   button.textContent = dark ? "☀" : "☾";
   button.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
-}
-
-function isInstalled() {
-  return window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
-}
-
-function updateInstallBanner() {
-  document.querySelector("#install-banner").hidden = isInstalled();
-}
-
-async function installApp() {
-  if (deferredInstallPrompt) {
-    deferredInstallPrompt.prompt();
-    const choice = await deferredInstallPrompt.userChoice;
-    if (choice.outcome === "accepted") toast("Study Flow is being installed.");
-    deferredInstallPrompt = null;
-    return;
-  }
-  const isApple = /iPad|iPhone|iPod/.test(navigator.userAgent);
-  const instructions = isApple
-    ? "In Safari, tap Share, then choose Add to Home Screen."
-    : "Open your browser menu, then choose Install app or Add to Home screen.";
-  openSheet("Install Study Flow", `<p class="muted">${instructions}</p><div class="form-actions"><button class="button" type="button" data-action="close">Got it</button></div>`);
 }
 
 function emptyState() {
@@ -121,11 +97,7 @@ function importData(event) { const file = event.target.files[0]; if (!file) retu
 
 document.querySelector("#menu-button").addEventListener("click", menu);
 document.querySelector("#theme-button").addEventListener("click", () => applyTheme(document.body.classList.contains("dark") ? "light" : "dark"));
-document.querySelector("#install-button").addEventListener("click", installApp);
 document.querySelectorAll(".nav-link").forEach(button => button.addEventListener("click", () => navigate(button.dataset.route)));
-window.addEventListener("beforeinstallprompt", event => { event.preventDefault(); deferredInstallPrompt = event; });
-window.addEventListener("appinstalled", () => { deferredInstallPrompt = null; updateInstallBanner(); toast("Study Flow installed."); });
 applyTheme(localStorage.getItem("study-flow-theme") || "light");
-updateInstallBanner();
 if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js"));
 render();
