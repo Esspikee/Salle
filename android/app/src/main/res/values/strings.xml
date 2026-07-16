@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Study Flow</string>
+    <string name="title_activity_main">Study Flow</string>
+    <string name="package_name">com.bryan.studyflow</string>
+    <string name="custom_url_scheme">com.bryan.studyflow</string>
+</resources>

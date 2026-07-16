@@ -7,3 +7,11 @@ data/*.sqlite-*
 preview.png
 mobile-preview-*.png
 pwa-preview-*.png
+node_modules/
+android/.gradle/
+android/build/
+android/app/build/
+android/keystore.properties
+android/**/*.jks
+android/**/*.keystore
+release/

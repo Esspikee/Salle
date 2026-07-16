@@ -1,0 +1,16 @@
+{
+  "appId": "com.bryan.studyflow",
+  "appName": "Study Flow",
+  "webDir": "mobile_pwa",
+  "android": {
+    "webContentsDebuggingEnabled": false
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": true,
+      "launchShowDuration": 700,
+      "backgroundColor": "#213A57",
+      "showSpinner": false
+    }
+  }
+}

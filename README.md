@@ -18,6 +18,58 @@ are on the same Wi-Fi. For installation and offline PWA support on a real phone,
 publish the contents of `mobile_pwa/` to any private HTTPS static host; browsers
 only enable service workers (the offline/install feature) on HTTPS or localhost.
 
+## Android APK
+
+The same phone-first PWA is also packaged as a native Android app with
+Capacitor. It keeps the same local-only data model, offline behavior, backup
+export/import, dark mode, and all subjects/tasks/grades features. The web
+install prompt is not shown inside the APK because Android installs the app
+directly.
+
+### Install the ready-built app
+
+The signed release APK is created at:
+
+```text
+android/app/build/outputs/apk/release/app-release.apk
+```
+
+Copy it to an Android phone, open it, and allow **Install unknown apps** for the
+app you used to open the file (for example Files or Drive). Android will then
+install **Study Flow** as a normal app. Data starts empty and stays on that
+phone until you export a JSON backup.
+
+### Build it again
+
+Prerequisites: Node.js, pnpm, Android SDK Platform 36, and Java 21. Android
+Studio's bundled Java runtime is suitable on Windows:
+
+```powershell
+$env:JAVA_HOME = "C:\\Program Files\\Android\\Android Studio\\jbr"
+$env:PATH = "$env:JAVA_HOME\\bin;$env:PATH"
+pnpm install
+pnpm android:build:debug
+```
+
+The debug APK is written to
+`android/app/build/outputs/apk/debug/app-debug.apk`. To rebuild the signed
+release APK, first create the local signing configuration described below, then
+run:
+
+```powershell
+pnpm android:build:release
+```
+
+### Release signing and backup
+
+`android/keystore.properties` and Android keystore files are intentionally
+ignored by Git. Copy `android/keystore.properties.example` to
+`android/keystore.properties`, create a keystore at the configured path with
+`keytool`, and put your own passwords in that local file. The same keystore is
+required to publish future updates over an installed release, so keep an
+encrypted backup outside this repository (for example, encrypted cloud storage
+and an offline copy). Never commit the keystore or its passwords.
+
 The prior desktop UI is preserved in `backups/desktop-ui-20260709-195841/` and
 the original desktop source is still in `university_tracker/`.
 

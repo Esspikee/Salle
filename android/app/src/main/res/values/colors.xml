@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="study_flow_navy">#213A57</color>
+    <color name="study_flow_blue">#0B6477</color>
+    <color name="study_flow_teal">#14919B</color>
+    <color name="study_flow_mint">#80ED99</color>
+    <color name="colorPrimary">#213A57</color>
+    <color name="colorPrimaryDark">#0B6477</color>
+    <color name="colorAccent">#0AD1C8</color>
+</resources>
